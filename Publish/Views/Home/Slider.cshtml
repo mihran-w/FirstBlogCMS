@@ -1,0 +1,38 @@
+﻿@model IEnumerable<DataLayer.Models.Slider>
+
+@{ 
+    string Active = "active";
+}
+	<!-- Banner Section -->
+<section class="banner-section">
+    <div class="main-slider-carousel owl-carousel owl-theme">
+        @foreach (var item in Model)
+        {
+
+            <div class="slide @Active" style="background-image: url(/Images//Sliders/@item.ImageName)">
+                <div class="patern-layer-one" style="background-image: url(/Content/images/main-slider/pattern-1.png)"></div>
+                <div class="patern-layer-two" style="background-image: url(/Content/images/main-slider/pattern-2.png)"></div>
+                <div class="auto-container">
+
+                    <!-- Content Column -->
+                    <div class="content-column">
+                        <div class="inner-column">
+                            <div class="patern-layer-three" style="background-image: url(/Content/images/main-slider/pattern-3.png)"></div>
+                            <div class="title"> @item.Title </div>
+                            <h1>آژانس ما ارائه می دهد <br> بهترین کیفیت خدمات برای مشتریان</h1>
+                            <div class="text">ما 100+ مهندس نرم افزار حرفه ای با بیش از <br> 10 سال تجربه در ارائه محصولات برتر.</div>
+                            <div class="btns-box">
+                                <a href="@item.Url" class="theme-btn btn-style-one" target="_blank"><span class="txt">مطالعه بیشتر</span></a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            Active = "";
+        }
+
+    </div>
+
+</section>
+<!-- End Banner Section -->

@@ -1,0 +1,23 @@
+﻿@model IEnumerable<DataLayer.Models.BlogComment>
+@using MyBlogCMS.Utilities
+
+
+    <div class="comments-area">
+        <div class="group-title">
+            <h3>@Model.Count() نظرات </h3>
+        </div>
+
+        @foreach (var item in Model)
+        {
+            <div class="comment-box">
+                <div class="comment">
+                    <div class="author-thumb"><img src="~/Content/images/resource/comment-icon.png" alt="@item.Name" style="width : 80px; height : 80px;"></div>
+                    <div class="comment-info clearfix"><strong> @item.Name </strong><div class="comment-time"> @item.CreateDate.ConvertToShamsi() </div></div>
+                    <div class="text">@item.Comment</div>
+                </div>
+            </div>
+        }
+
+
+    </div>
+

@@ -1,0 +1,72 @@
+﻿@model IEnumerable<DataLayer.Models.ProjectGallery>
+@using MyBlogCMS.Utilities
+@{
+    ViewBag.Title = "بخش مدیریت گالری پروژه ها";
+}
+
+<h2 class="alert alert-info text-center">بخش مدیریت گالری پروژه ها</h2>
+
+<p>
+    <a class="btn btn-success" href="@Url.Action("Create","ProjectGalleries")">افزودن پروژه</a>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ShortDes)
+        </th>
+      
+        <th>
+            @Html.DisplayNameFor(model => model.Customer)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreateDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Website)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Location)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ImageName)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShortDes)
+            </td>
+         
+            <td>
+                @Html.DisplayFor(modelItem => item.Customer)
+            </td>
+            <td>
+                @item.CreateDate.ConvertToShamsi()
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Website)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Location)
+            </td>
+            <td>
+                <img src="~/Images/ProjectGallery/@item.ImageName" class="img-thumbnail" />
+            </td>
+            <td>
+                <a class="btn btn-primary mb-1" href="@Url.Action("Edit","ProjectGalleries",new {id = item.pGalleryId })">ویرایش</a>
+                <a class="btn btn-warning mb-1" href="@Url.Action("Details","ProjectGalleries",new {id = item.pGalleryId })">جزئیات</a>
+                <a class="btn btn-danger mb-1" href="@Url.Action("Delete","ProjectGalleries",new {id = item.pGalleryId })">حذف</a>
+            </td>
+        </tr>
+    }
+
+</table>

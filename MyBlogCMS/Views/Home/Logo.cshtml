@@ -1,0 +1,8 @@
+﻿@model IEnumerable<DataLayer.Models.Logo>
+
+@foreach (var item in Model)
+{
+    <div class="pull-left logo-box">
+        <div class="logo"><a href="index.html"><img src="~/Images/Logoes/@item.ImageName" alt="@item.Title" title="@item.Title"></a></div>
+    </div>
+}

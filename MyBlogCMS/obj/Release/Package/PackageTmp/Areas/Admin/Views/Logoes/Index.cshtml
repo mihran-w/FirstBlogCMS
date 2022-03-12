@@ -1,0 +1,38 @@
+﻿@model IEnumerable<DataLayer.Models.Logo>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>بخش لوگوی وبسایت</h2>
+
+<p>
+    @Html.ActionLink("افزودن لوگوی جدید", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ImageName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            <img src="~/Images/Logoes/@item.ImageName" width="100" height="100"/>
+        </td>
+        <td>
+            @Html.ActionLink("ویرایش", "Edit", new { id=item.LogoID }) |
+            @Html.ActionLink("حذف", "Delete", new { id=item.LogoID })
+        </td>
+    </tr>
+}
+
+</table>

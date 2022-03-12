@@ -1,0 +1,47 @@
+﻿@model IEnumerable<DataLayer.Models.AdminLogins>
+
+@{
+    ViewBag.Title = "مدیریت ادمین های وبسایت";
+}
+
+<h2 class="alert alert-info text-center">مدیریت ادمین های وبسایت</h2>
+
+<p>
+    <a class="btn btn-success" href="@Url.Action("Create","AdminLogins")">افزودن ادمین جدید</a>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Password)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Password)
+            </td>
+            <td>
+                <a class="btn btn-warning" href="@Url.Action("Edit","AdminLogins",new {id =item.LoginId })"> ویرایش </a>
+                <a class="btn btn-primary" href="@Url.Action("Details","AdminLogins",new {id = item.LoginId })"> جزئیات </a>
+                <a class="btn btn-danger" href="@Url.Action("Delete","AdminLogins",new {id = item.LoginId })"> حذف </a>
+
+            </td>
+        </tr>
+    }
+
+</table>

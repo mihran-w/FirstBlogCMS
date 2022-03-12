@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html dir="rtl">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    @**@<link href="~/Content/bootstrap.rtl.min.css" rel="stylesheet" />
+   
+</head>
+<body>
+    @*<header class="bg-dark p-4">
+        <img src="~/Content/Logo1.png" width="150" height="75"/>
+    </header>*@
+
+    <div class="container mt-3">
+        @RenderBody()
+    </div>
+
+    <footer class="p-4 m-4 border border-3 rounded-2">
+        <p class="text-center">&copy; @DateTime.Now.Year - Mihranw.ir</p>
+    </footer>
+
+    <script src="~/Scripts/bootstrap.bundle.min.js"></script>
+    <script src="~/Scripts/JQuery.min.js"></script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

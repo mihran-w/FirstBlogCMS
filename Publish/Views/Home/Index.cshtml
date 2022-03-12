@@ -1,0 +1,20 @@
+﻿@{
+    ViewBag.Title = "";
+}
+
+
+@* Step One ! *@
+@*@Html.Action("Slider")
+
+    @Html.Action("LastBlogs", "LastBlog")*@
+
+@* Step Two ! *@
+@section Logo{
+    @Html.Action("Logo","Home")
+}
+@section Slider{
+    @Html.Action("Slider")
+}
+@section LastBlogs{
+    @Html.Action("LastBlogs", "LastBlog")
+}

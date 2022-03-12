@@ -1,0 +1,85 @@
+﻿@model IEnumerable<DataLayer.Models.BlogGroup>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<p>
+    <a class="btn btn-success" id="btnCreateGroup" href="#BlogGroupModal" data-bs-toggle="modal">ایجاد گروه</a>
+</p>
+
+<!-- Modal -->
+<div class="modal fade" id="BlogGroupModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="BlogGroupModalLable"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.GroupName)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.GroupName)
+            </td>
+            <td>
+
+                <a class="btn btn-secondary" id="btnEditGroup" href="#BlogGroupModal" data-bs-toggle="modal" onclick="EditModal(@item.GroupID)">ویرایش</a>
+                <a class="btn btn-danger" id="btnDeleteGroup" href="#BlogGroupModal" data-bs-toggle="modal" onclick="DeleteModal(@item.GroupID)">حذف گروه</a>
+                @*@Html.ActionLink("Details", "Details", new { id = item.GroupID })*@
+            </td>
+        </tr>
+    }
+
+</table>
+@section scripts{
+    <script src="~/Scripts/JQuery.min.js"></script>
+    <script>
+        $("#btnCreateGroup").click(function () {
+            $.get("/Admin/BlogGroups/Create", function (res) {
+                $("#BlogGroupModalLable").html("افزودن گروه");
+                $(".modal-body").html(res);
+            });
+        });
+
+        // Edit Modal Function
+        function EditModal(id) {
+            $.get("/Admin/BlogGroups/Edit/" + id, function (res) {
+                $("#BlogGroupModalLable").html("ویرایش گروه");
+                $(".modal-body").html(res);
+            });
+        }
+
+        // Delete Modal Function
+        function DeleteModal(id) {
+            $.get("/Admin/BlogGroups/Delete/" + id, function (res) {
+                $("#BlogGroupModalLable").html("حذف گروه");
+                $(".modal-body").html(res);
+            });
+        }
+
+        // Details Modal Function
+
+
+        
+
+    </script>
+}

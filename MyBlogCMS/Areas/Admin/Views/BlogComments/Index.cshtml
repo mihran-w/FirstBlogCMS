@@ -1,0 +1,63 @@
+﻿@model IEnumerable<DataLayer.Models.BlogComment>
+@using MyBlogCMS.Utilities
+@{
+    ViewBag.Title = "مدیریت نظرات وبسایت";
+}
+
+<h2 class="alert alert-dark">مدیریت نظرات کاربران وبسایت</h2>
+
+<p>
+    <a class="btn btn-success m-1" href="@Url.Action("Create","BlogComments")">افزودن نظر</a>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Blog.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Website)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Comment)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreateDate)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Blog.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Website)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Comment)
+        </td>
+        <td>
+            @item.CreateDate.ConvertToShamsi()
+        </td>
+        <td>
+            <a class="btn btn-warning m-1" href="@Url.Action("Details","BlogComments",new { id = item.CommentID })">جزئیات نظر</a>
+            <a class="btn btn-danger m-1" href="@Url.Action("Delete","BlogComments",new { id = item.CommentID })">حذف نظر</a>
+
+        </td>
+    </tr>
+}
+
+</table>

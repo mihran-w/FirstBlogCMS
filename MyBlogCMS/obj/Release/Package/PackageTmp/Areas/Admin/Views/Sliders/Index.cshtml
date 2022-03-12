@@ -1,0 +1,66 @@
+﻿@model IEnumerable<DataLayer.Models.Slider>
+@using MyBlogCMS.Utilities
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>اسلایدر بخش اول سایت</h2>
+
+<p>
+    @Html.ActionLink("افزودن اسلاید", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ImageName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StartDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EndDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Url)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                <img src="~/Images/Sliders/@item.ImageName" width="100" height="100" class="img-thumbnail" />
+            </td>
+            <td>
+                @item.StartDate.ConvertToShamsi()
+            </td>
+            <td>
+                @item.EndDate.ConvertToShamsi()
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsActive)
+                @Html.YesNo(item.IsActive)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Url)
+            </td>
+            <td>
+                @Html.ActionLink("ویرایش", "Edit", new { id = item.SlideID }) |
+                @Html.ActionLink("جزئیات", "Details", new { id = item.SlideID }) |
+                @Html.ActionLink("حذف", "Delete", new { id = item.SlideID })
+            </td>
+        </tr>
+    }
+
+</table>

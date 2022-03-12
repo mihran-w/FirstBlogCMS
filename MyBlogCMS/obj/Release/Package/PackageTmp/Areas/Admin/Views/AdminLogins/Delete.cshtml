@@ -1,0 +1,51 @@
+﻿@model DataLayer.Models.AdminLogins
+
+@{
+    ViewBag.Title = "حذف ادمین وبسایت";
+}
+
+<h2 class="alert alert-info text-center">حذف ادمین وبسایت</h2>
+
+
+<div>
+    <h4 class="alert alert-danger text-center">آیا از حذف کاربر "@Model.UserName" مطمئن هستید؟</h4>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Password)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="حذف" class="btn btn-danger" />
+            <a class="btn btn-secondary" href="@Url.Action("Index","AdminLogins")"> بازگشت </a>
+
+        </div>
+    }
+</div>

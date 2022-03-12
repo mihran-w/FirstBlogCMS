@@ -1,0 +1,82 @@
+﻿@model IEnumerable<DataLayer.Models.Blog>
+@using MyBlogCMS.Utilities;
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>همه مقالات جاری</h2>
+
+<a href="@Url.Action("Create","Blogs")" class="btn btn-success mt-2">افزودن وبلاگ</a>
+<div>مجمموع مقالات : <span> @(ViewBag.CountBlog) </span></div>
+
+<table class="table">
+    <tr>
+        <th>
+            ردیف
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BlogGroup.GroupName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ShortDescription)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.visit)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ImageName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreateDate)
+        </th>
+        <th></th>
+    </tr>
+
+    @{
+        int num = 0;
+        foreach (var item in Model)
+        {
+
+            <tr>
+
+                <td>
+
+                    @(num = num + 1)
+
+                </td>
+
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.BlogGroup.GroupName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ShortDescription)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.visit)
+                </td>
+                <td>
+                    <img src="~/Images/@item.ImageName" class="img-thumbnail" width="100" height="100" />
+                </td>
+                <td>
+                    @item.CreateDate.ConvertToShamsi()
+                </td>
+                <td>
+                    <a href="@Url.Action("Edit", "Blogs", new { id = item.BlogID })" class="btn btn-primary mt-2">ویرایش</a>
+                    <a href="@Url.Action("Delete", "Blogs", new { id = item.BlogID })" class="btn btn-success mt-2">حذف</a>
+
+                </td>
+
+            </tr>
+        }
+    }
+
+</table>

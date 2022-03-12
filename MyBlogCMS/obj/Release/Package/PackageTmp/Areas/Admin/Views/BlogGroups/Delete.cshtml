@@ -1,0 +1,37 @@
+﻿@model DataLayer.Models.BlogGroup
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+
+<h3>آیا از حذف این گروه مطمئن هستید ؟</h3>
+<div>
+    <div class="p-1 border border-2 border-end-0 border-top-0 rounded-3">
+        <dl class="dl-horizontal">
+
+            <dt class="mb-2">
+                @Html.DisplayNameFor(model => model.GroupName) :
+            </dt>
+
+            <dd class="p-3 border border-3 border-top-0 border-end-0 rounded-3 border-danger" >
+                 
+                @Html.DisplayFor(model => model.GroupName)
+
+            </dd>
+        </dl>
+
+    </div>
+
+
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(x=>x.GroupID)
+        <div class="form-actions mt-2">
+            <input type="submit" value="حذف" class="btn btn-danger shadow" />
+            <a class="btn btn-light" href="/Admin/BlogGroups/Index" data-bs-dismiss="modal">بازگشت</a>
+        </div>
+    }
+</div>

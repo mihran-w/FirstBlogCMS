@@ -1,0 +1,39 @@
+﻿@model IEnumerable<DataLayer.Models.Blog>
+@using MyBlogCMS.Utilities
+    
+    <!-- News Section -->
+<section class="news-section">
+    <div class="auto-container">
+        <!-- Sec Title -->
+        <div class="sec-title centered">
+            <div class="title">وبلاگ ما</div>
+            <h2>بررسی  <br> اخبار سایت </h2>
+        </div>
+        <div class="row clearfix">
+
+            @foreach (var item in Model)
+            {
+                <!-- News Block -->
+                <div class="news-block col-lg-4 col-md-6 col-sm-12">
+                    <div class="inner-box">
+                        <div class="image">
+                            <a href="news-detail.html"><img src="~/Images/@item.ImageName" alt="@item.Title" width="370" height="270"/></a>
+                        </div>
+                        <div class="lower-content">
+                            <div class="post-date">@item.CreateDate.ConvertToShamsi()</div>
+                            <ul class="post-meta">
+                                <li><span class="icon flaticon-comment"></span>تعداد 3 نظر </li>
+                            </ul>
+                            <h4><a href="news-detail.html">@item.Title</a></h4>
+                            <div class="text">@item.ShortDescription</div>
+                            <a class="read-more" href="news-detail.html">ادامه مطلب <span class="arrow flaticon-long-arrow-pointing-to-the-right"></span></a>
+                        </div>
+                    </div>
+                </div>
+
+            }
+
+        </div>
+    </div>
+</section>
+<!-- End News Section -->
